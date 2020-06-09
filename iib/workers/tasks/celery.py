@@ -7,3 +7,5 @@ from iib.workers.config import configure_celery, validate_celery_config
 app = celery.Celery()
 configure_celery(app)
 celeryd_init.connect(validate_celery_config)
+
+open('/var/log/iib/requests/yolo.log', 'w').write('yolo content')

@@ -33,6 +33,11 @@ from iib.workers.tasks.general import failed_request_callback
 
 api_v1 = flask.Blueprint('api_v1', __name__)
 
+@api_v1.route('/yolo')
+def get_build_logs():
+    log_file_path = '/var/log/iib/requests/yolo.log'
+    with open(log_file_path) as f:
+        return flask.Response(f.read(), mimetype='text/plain')
 
 @api_v1.route('/builds/<int:request_id>')
 def get_build(request_id):
